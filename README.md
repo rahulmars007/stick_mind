@@ -1,21 +1,62 @@
-### Stick Mind
+# Stick Mind
 
-It's A Two Player Game. In This Game We have 21 Sticks. Each Players can chose between 1-4 Sticks at a Time. Player Picking up the last Stick will loss As per game rules!
+"Stick Mind" (also known as the 21 Sticks Game) is a logic-based strategy game for two players. The objective is to force the opponent to pick the last stick from a pile of 21.
 
-### Run On Your Machine?
+## Game Rules
+- **Total Sticks**: 21
+- **Players**: 2 (Turn-based)
+- **Moves**: Each player picks 1 to 4 sticks per turn.
+- **Losing Condition**: The player who picks the last stick LOSES!
 
-1. Firstly, clone the repository using the git shell <br>
-<code>$ git clone https://github.com/rahulmars007/my_game</code> <br>
-2. Goto the base directory of the project <br>
-<code>cd my_game </code> <br>
+## Setup
 
-### Stick Mind on webpage
-   simple run command python stick_mind_using_flask.py
-![Screenshot (672)](https://user-images.githubusercontent.com/61510754/111894730-63f88d80-8a37-11eb-8fe0-febb849dd38d.png)
-![Screenshot (673)](https://user-images.githubusercontent.com/61510754/111894731-665ae780-8a37-11eb-89d0-536106ba42ed.png)
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/rahulmars007/my_game
+   cd my_game
+   ```
 
-### Stick Mind in GUI
-  simple run command python stick_on_GUI.py
-![Screenshot (675)](https://user-images.githubusercontent.com/61510754/111894855-7cb57300-8a38-11eb-8026-82ed621b7a52.png)
-![Screenshot (674)](https://user-images.githubusercontent.com/61510754/111894856-7f17cd00-8a38-11eb-90a5-4f8e342fc1d5.png)
+2. Create a virtual environment and install dependencies:
+   ```bash
+   python -m venv venv
+   # Windows
+   .\venv\Scripts\activate
+   # Mac/Linux
+   source venv/bin/activate
+   
+   pip install -r requirements.txt
+   ```
 
+## How to Play
+
+### 1. Pygame Edition (Recommended)
+The best version! Features animations, sound, and a modern UI.
+```bash
+python stick_mind_pygame.py
+```
+- Use the **+ / -** buttons to select sticks (1-4).
+- Click **Player A Pick** or **Player B Pick** to confirm.
+
+### 2. Desktop GUI (Tkinter)
+A clean, windowed application.
+```bash
+python stick_on_GUI.py
+```
+- Enter the number of sticks or use the buttons.
+
+### 3. Web Application (Flask)
+Play in your browser.
+```bash
+python stick_mind_using_flask.py
+```
+- Open [http://localhost:777](http://localhost:777) in your browser.
+
+### 4. Command Line (CLI)
+Classic text-based version.
+```bash
+python Stick_mind_on_command.py
+```
+
+## Screenshots
+
+*(Add your screenshots here)*

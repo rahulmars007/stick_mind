@@ -1,67 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>GAME</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<style>
-.jumbotron{
-        background-color: orange;
-        color: #000
-}
-.jumbotron1{
-    background-color: orange;
-    color: #000
-}
-
-</style>
+    <title>Stick Mind Game</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body { background-color: #f8f9fa; }
+        .game-container { margin-top: 50px; max-width: 600px; }
+        .jumbotron { background-color: #ff9800; color: white; padding: 2rem; border-radius: 15px; }
+        .status-box { background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .stick-count { font-size: 3rem; font-weight: bold; color: #e65100; }
+        .btn-game { min-width: 150px; }
+    </style>
 </head>
 <body>
-   
-   <div class="jumbotron text-center">
-        <h1>STICK MIND</h1><br/>
-      </div>
-    <div class="jumbotron1 text-center">
-        <h1>
-           ABOUT STICK MIND
-        </h1><br/>
-        <h2> It's A Two Player Game. In This Game We have 21 Sticks. Each Players can chose between 1-4
-        Sticks at a Time. Player Picking up the last Stick will loss As per game rules!</h2>
+    <div class="container game-container">
+        <div class="jumbotron text-center">
+            <h1>STICK MIND</h1>
+            <p>Don't pick up the last stick!</p>
+        </div>
+
+        <div class="status-box text-center">
+            <h3>Total Sticks</h3>
+            <div class="stick-count">{{ total }}</div>
+            <hr>
+            
+            <div class="alert alert-info">
+                <strong>{{ message }}</strong>
+            </div>
+
+            {% if not game_over %}
+            <form action="/play" method="post">
+                <div class="form-group">
+                    <label>Pick 1 to 4 sticks:</label>
+                    <input type="number" name="sticks" class="form-control text-center mx-auto" style="width: 100px;" min="1" max="4" required autofocus>
+                </div>
+                
+                <div class="row justify-content-center mt-4">
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary btn-game" {% if turn != 'A' %}disabled{% endif %}>
+                            Player A Move
+                        </button>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-success btn-game" {% if turn != 'B' %}disabled{% endif %}>
+                            Player B Move
+                        </button>
+                    </div>
+                </div>
+            </form>
+            {% else %}
+            <a href="/" class="btn btn-lg btn-warning mt-3">Play Again</a>
+            {% endif %}
+        </div>
         
-   
-    
-   <div class="jumbotron">
-    <div class="row">
-   <div style="background-color: #f4511e" class="col-sm-12">
-     
-    <div class="container">
-    <div class="row">
-   <div style="background-color: ;" class="col-sm-12">
-     <form  action="/run/" method="post" >
-            <h1>Total stick:</h1><br/>
-            <input readonly="readonly" name="total" type="number" value="{{t}}" class="form-control" />
-   
-    <h1> Message={{m}}</h1>
-     
-    <h1>START GAME</h1>
-    <div class="form-group">
-        <input type="number" name="coin" class="form-control"  placeholder="enter number 1 to 4 " ><br/>
-        <h1>
-            <button type="submit" {{da}} name="r" class="col-sm-6,btn btn-info container" value="bt A">PLAYER A</button>
-            <br/>
-            <button type="submit" {{db}} name="r" class="col-sm-6,btn btn-info container" value="bt B" >PLAYER B</button>
-        </h1><br/>
-    </div>
-     </form>
+        <div class="mt-4 text-center text-muted">
+            <small>Game Rules: 21 Sticks. Pick 1-4. Last one to pick loses.</small>
         </div>
     </div>
-   </div>
-    </div>
-   </div>
-   </div></div>
 </body>
 </html>
