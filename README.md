@@ -12,8 +12,8 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/rahulmars007/my_game
-   cd my_game
+   git clone https://github.com/rahulmars007/stick_mind
+   cd stick_mind
    ```
 
 2. Create a virtual environment and install dependencies:
